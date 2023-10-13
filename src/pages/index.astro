@@ -1,16 +1,138 @@
 ---
-
+import TechStack from "./TechStack";
+import ContactList from "./ContactList";
+import SoftwareList from "./SoftwareList";
+import PortfolioList from "./PortfolioList";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+	<meta name="description" content="Marcus Leonas Harvey's personal website">
+	<meta name="keywords" content="Portfolio, CSS, JS, TS, SCSS, Astro, Theatre Technician">
+	<meta name="author" content="Marcus Leonas Harvey">
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
+
+    <title>Marcus Leonas Harvey</title>
+  </head>
+  <body class="bg-[#1c1c1c] text-white">
+    <main class="max-w-screen-xl font-poppins mx-auto px-4">
+      <section class="my-8 flex flex-col gap-2">
+        <h1 class="font-semibold text-4xl md:text-6xl">
+          I'm <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffa9e1] to-[#659dff]"
+            >Marcus</span
+          >.
+        </h1>
+        <p class="text-xl md:text-2xl">
+          A frontend and Roblox developer, as well as a novice theatre
+          technician.
+        </p>
+      </section>
+      <section class="my-8 flex flex-col gap-2">
+        <h2 class="font-medium text-2xl">Tech Stack</h2>
+        <div class="flex flex-col md:flex-row gap-2">
+          {
+            TechStack.map((item) => (
+              <span class="bg-[#0F70B7] px-3 py-1 inline-flex gap-2 items-center rounded-full">
+                <i class={item.icon} /> {item.title}
+              </span>
+            ))
+          }
+        </div>
+      </section>
+      <section class="my-8">
+        <h2 class="font-medium text-2xl mb-2">Software</h2>
+        <div class="flex flex-col md:flex-row gap-2">
+          {
+            SoftwareList.map((item) => (
+              <span class="bg-[#0F70B7] px-3 py-1 inline-flex gap-2 items-center rounded-full">
+                {item}
+              </span>
+            ))
+          }
+        </div>
+      </section>
+      <section class="my-8">
+        <h2 class="font-medium text-2xl mb-2">Contact Me</h2>
+        <div class="flex flex-col md:flex-row gap-2">
+          {
+            ContactList.map((item) => (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="me"
+                class="bg-[#0F70B7] py-1 px-2 inline-flex gap-2 items-center rounded-full hover:bg-[#22577d]"
+              >
+                <i class={item.icon} /> {item.title}
+              </a>
+            ))
+          }
+        </div>
+      </section>
+      <section class="my-8">
+        <h2 class="font-medium text-2xl mb-4">Portfolio</h2>
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {
+            PortfolioList.map((item) => (
+              <div class="w-full p-4 rounded-md border-2 border-white">
+                <h3 class="text-2xl font-medium">{item.title}</h3>
+                <span class="text-sm">{item.date}</span>
+                <p class="text-sm">
+                  <strong>By </strong> {item.author}
+                </p>
+                <p class="text-sm mb-2">
+                  <strong>For </strong> {item.society}
+                </p>
+                <div class="flex flex-row gap-1">
+                  {item.roles.map((item) => (
+                    <span class="bg-[#0F70B7] text-sm px-3 py-1 rounded-md">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XGK203VY1H"
+      type="text/partytown"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-XGK203VY1H");
+    </script>
+  </body>
 </html>
