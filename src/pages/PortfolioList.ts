@@ -1,10 +1,24 @@
 export default [
     {
+        title: 'The Tempest',
+        author: 'William Shakespeare',
+        society: 'Pitch Breath Theatre Company',
+        date: 'Nov 2023',
+        roles: ["Lighting"],
+    },
+    {
         title: 'A Spy With A View',
         author: 'Robert Scott',
         society: 'Ifield Barn Theatre (members only)',
         date: 'Jul 2023',
-        roles: ["Lighting", "Sound", "SM"],
+        roles: ["Lighting", "Sound", "Stage Manager"],
+    },
+    {
+        title: 'Bonnie & Clyde',
+        author: 'Frank Wildhorn',
+        society: 'East Surrey Performing Arts',
+        date: 'May 2023',
+        roles: ["Set Build", "Stagehand"],
     },
     {
         title: 'Ideaphoria',
