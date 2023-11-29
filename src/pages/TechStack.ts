@@ -27,4 +27,8 @@ export default [
         title: "Astro",
         icon: "devicon-astro-plain",
     },
+    {
+        title: "Go",
+        icon: "devicon-go-original-wordmark",
+    },
 ]
