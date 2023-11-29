@@ -6,7 +6,7 @@ export default [
     },
     {
         title: "Mastodon",
-        url: "https://mas.to/marcusleonas",
+        url: "https://mas.to/@marcusleonas",
         icon: "fa-brands fa-mastodon",
     },
     {
@@ -19,9 +19,9 @@ export default [
         url: "mailto:marcus@marcusleonasharvey.com",
         icon: "fa-solid fa-envelope",
     },
-    {
-        title: "PGP",
-        url: "/pgp_key.txt",
-        icon: "fa-solid fa-key",
-    },
+    // {
+    //     title: "PGP",
+    //     url: "/pgp_key.txt",
+    //     icon: "fa-solid fa-key",
+    // },
 ]
