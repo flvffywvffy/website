@@ -99,12 +99,15 @@ import PortfolioList from "./PortfolioList";
             PortfolioList.map((item) => (
               <div class="w-full p-4 rounded-md border-2 border-white">
                 <h3 class="text-2xl font-medium">{item.title}</h3>
-                <span class="text-sm">{item.date}</span>
+                <span class="text-sm"><strong>Date: </strong>{item.date}</span>
                 <p class="text-sm">
-                  <strong>By </strong> {item.author}
+                  <strong>Author: </strong> {item.author}
                 </p>
                 <p class="text-sm mb-2">
-                  <strong>For </strong> {item.society}
+                  <strong>Group: </strong> {item.society}
+                </p>
+                <p class="text-sm mb-2">
+                  <strong>Roles: </strong>
                 </p>
                 <div class="flex flex-row gap-1">
                   {item.roles.map((item) => (
@@ -118,7 +121,7 @@ import PortfolioList from "./PortfolioList";
           }
         </div>
       </section>
-      <a href="https://github.com/flvffywvffy/website" class="text-sm underline underline-2">View Source on Github</a>
+      <a href="https://github.com/flvffywvffy/website" class="text-sm underline underline-2 pb-4">View Source on Github</a>
     </main>
 
     <!-- Google tag (gtag.js) -->
