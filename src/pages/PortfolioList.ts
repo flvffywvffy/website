@@ -1,17 +1,24 @@
 export default [
     {
+        title: "Tom's Midnight Garden",
+        author: 'Philippa Pearce',
+        society: 'Brighton Little Theatre',
+        date: 'Dec 2023',
+        roles: ["Operator"],
+    },
+    {
         title: 'The Tempest',
         author: 'William Shakespeare',
         society: 'Pitch Breath Theatre Company',
         date: 'Nov 2023',
-        roles: ["Lighting"],
+        roles: ["Lighting Operator"],
     },
     {
         title: 'A Spy With A View',
         author: 'Robert Scott',
         society: 'Ifield Barn Theatre (members only)',
         date: 'Jul 2023',
-        roles: ["Lighting", "Sound", "Stage Manager"],
+        roles: ["Sound Design", "Stage Manager"],
     },
     {
         title: 'Bonnie & Clyde',
@@ -25,20 +32,20 @@ export default [
         author: 'N/A',
         society: 'Leaps and Beats',
         date: 'Apr 2023',
-        roles: ["Lighting"],
+        roles: ["Lighting Design"],
     },
     {
         title: 'Improbable Fiction',
         author: 'Alan Ayckbourn',
         society: 'East Surrey Performing Arts',
         date: 'Feb 2023',
-        roles: ["Lighting", "Sound"],
+        roles: ["Lighting Design", "Sound Design"],
     },
     {
         title: 'Out of Order',
         author: 'Ray Cooney',
         society: 'East Surrey Performing Arts',
         date: 'Feb 2022',
-        roles: ["Lighting", "Sound"],
+        roles: ["Lighting Design", "Sound Design"],
     },
 ]
