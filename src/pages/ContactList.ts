@@ -19,6 +19,7 @@ export default [
         url: "mailto:marcus@marcusleonasharvey.com",
         icon: "fa-solid fa-envelope",
     },
+    // I'm not using PGP currently
     // {
     //     title: "PGP",
     //     url: "/pgp_key.txt",
