@@ -10,6 +10,11 @@ export default [
         icon: "fa-brands fa-mastodon",
     },
     {
+        title: "Instagram",
+        url: "https://instagram.com/marcusleonas_public/",
+        icon: "fa-brands fa-instagram",
+    },
+    {
         title: "LinkedIn",
         url: "https://www.linkedin.com/in/marcusleonas",
         icon: "fa-brands fa-linkedin",
@@ -19,10 +24,4 @@ export default [
         url: "mailto:marcus@marcusleonasharvey.com",
         icon: "fa-solid fa-envelope",
     },
-    // I'm not using PGP currently
-    // {
-    //     title: "PGP",
-    //     url: "/pgp_key.txt",
-    //     icon: "fa-solid fa-key",
-    // },
 ]
