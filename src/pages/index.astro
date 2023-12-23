@@ -8,6 +8,19 @@ var date = new Date();
 var londonTime = date.toLocaleString("en-GB", { timeZone: "Europe/London" });
 const londonTimeArray = londonTime.split(", ");
 londonTime = londonTimeArray[1];
+
+import { getCollection } from "astro:content";
+
+const portfolioEntries = await getCollection("portfolio");
+
+// Manually sort entries by sortorder (lowest to highest)
+const sortedEntries = portfolioEntries
+  .slice() // Create a shallow copy to avoid modifying the original array
+  .sort((a, b) => {
+    const sortorderA = a.data.sortOrder || 0;
+    const sortorderB = b.data.sortOrder || 0;
+    return sortorderB - sortorderA;
+});
 ---
 
 <html lang="en">
@@ -49,7 +62,7 @@ londonTime = londonTimeArray[1];
     <title>Marcus Leonas Harvey</title>
   </head>
   <body class="bg-[#1c1c1c] text-white">
-    <main class="max-w-screen-xl font-poppins mx-auto px-4">
+    <main class="max-w-screen-2xl font-poppins mx-auto px-4">
       <section class="my-8 flex flex-col gap-2">
         <h1 class="font-semibold text-4xl md:text-6xl">
           I'm <span
@@ -106,24 +119,26 @@ londonTime = londonTimeArray[1];
         <h2 class="font-medium text-2xl mb-4">Portfolio</h2>
         <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
           {
-            PortfolioList.map((item) => (
+            sortedEntries.map((post) => (
               <div class="w-full p-4 rounded-md border-2 border-white">
-                <h3 class="text-2xl font-medium">{item.title}</h3>
+                <h3 class="text-2xl font-medium hover:underline">
+                  <a href={"/portfolio/" + post.slug}>{post.data.title}</a>
+                </h3>
                 <span class="text-sm">
                   <strong>Date: </strong>
-                  {item.date}
+                  {post.data.showDates}
                 </span>
                 <p class="text-sm">
-                  <strong>Author: </strong> {item.author}
+                  <strong>Author: </strong> {post.data.author}
                 </p>
                 <p class="text-sm mb-2">
-                  <strong>Group: </strong> {item.society}
+                  <strong>Group: </strong> {post.data.group}
                 </p>
                 <p class="text-sm mb-2">
                   <strong>Roles: </strong>
                 </p>
                 <div class="flex flex-row gap-1">
-                  {item.roles.map((item) => (
+                  {post.data.roles.map((item) => (
                     <span class="bg-[#0F70B7] text-sm px-3 py-1 rounded-md">
                       {item}
                     </span>
