@@ -1,0 +1,4 @@
+{
+    "html": true,
+    "MD033": { "allowed_elements": ["br"] }
+}

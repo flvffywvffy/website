@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+const allBlogPosts = await getCollection("blog");
+
+import Navbar from "../../components/navbar.astro";
+---
+
+<!doctype html>
+<html>
+  <head>
+    <title>Blog - Marcus Leonas Harvey</title>
+  </head>
+  <body class="bg-black">
+    <section
+      class="flex flex-col min-h-screen w-full rounded-[50px] overflow-hidden p-12 bg-[#eeeee9]"
+    >
+      <Navbar />
+      <h1 class="text-4xl font-semibold pb-4">All Blog Posts</h1>
+      <div class="grid gap-2 grid-cols-1 md:grid-cols-4">
+        {
+          allBlogPosts.map((p: any) => (
+            <div class="flex flex-col rounded-lg overflow-hidden border border-black">
+              <img src={p.data.image} alt="Post Image" />
+              <div class="p-2">
+                <h2 class="text-xl font-medium">{p.data.title}</h2>
+                <a
+                  href={`/blog/post/${p.slug}`}
+                  class="underline text-blue-600"
+                >
+                  View Post
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+@font-face {
+  font-family: HubotSans;
+  src: url("/fonts/Hubot-Sans.ttf") format("truetype"),
+    url("/fonts/Hubot-Sans.woff2") format("woff2");
+}

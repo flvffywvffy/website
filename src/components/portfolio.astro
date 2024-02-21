@@ -1,0 +1,20 @@
+---
+import { portfolio } from "./portfolio";
+---
+
+{
+  portfolio.map((item) => (
+    <div class="flex flex-col p-4 bg-neutral-300 text-black rounded-xl">
+      <div class="pb-2">
+          <h2 class="text-lg font-semibold">{item.title}</h2>
+          <p><b>Date&colon; </b> {item.date}</p>
+          <p><b>Director&colon; </b> {item.director}</p>
+      </div>
+      <div class="flex flex-col xl:flex-row gap-1">
+        {item.roles.map((role) => (
+          <span class="px-2 py-1 bg-primary rounded-md text-white">{role}</span>
+        ))}
+      </div>
+    </div>
+  ))
+}
