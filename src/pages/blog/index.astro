@@ -3,19 +3,21 @@ import { getCollection } from "astro:content";
 const allBlogPosts = await getCollection("blog");
 
 import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
 ---
 
 <!doctype html>
 <html>
   <head>
     <title>Blog - Marcus Leonas Harvey</title>
+    <link rel="stylesheet" href="/fonts.css">
   </head>
   <body class="bg-black">
     <section
-      class="flex flex-col min-h-screen w-full rounded-[50px] overflow-hidden p-12 bg-[#eeeee9]"
+      class="flex flex-col min-h-[88vh] w-full rounded-b-[50px] overflow-hidden p-12 bg-[#eeeee9]"
     >
       <Navbar />
-      <h1 class="text-4xl font-semibold pb-4">All Blog Posts</h1>
+      <h1 class="text-4xl font-semibold pb-4 mt-4 font-hubot">All Blog Posts</h1>
       <div class="grid gap-2 grid-cols-1 md:grid-cols-4">
         {
           allBlogPosts.map((p: any) => (
@@ -35,5 +37,6 @@ import Navbar from "../../components/navbar.astro";
         }
       </div>
     </section>
+    <Footer />
   </body>
 </html>

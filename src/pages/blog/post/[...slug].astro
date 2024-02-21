@@ -13,22 +13,25 @@ const { entry }: any = Astro.props;
 const { Content } = await entry.render();
 
 import Navbar from "../../../components/navbar.astro";
+import Footer from "../../../components/footer.astro";
 ---
 
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="/fonts.css">
   </head>
   <body>
     <section class="p-4 max-w-4xl mx-auto">
       <Navbar />
       <button onclick="window.history.go(-1); return false;" class="underline text-blue-600 mb-2">&lt; Go Back</button>
       <img src={entry.data.image} alt="Post Image" class="mb-4" />
-      <h1 class="text-4xl font-semibold pb-4">{entry.data.title}</h1>
+      <h1 class="text-4xl font-semibold pb-4 font-hubot">{entry.data.title}</h1>
       <div class="prose prose-zinc w-full max-w-none text-justify">
           <Content />
       </div>
     </section>
+    <Footer />
   </body>
 </html>
