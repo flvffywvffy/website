@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = href === pathname || href === "/" + subpath?.[0];
+---
+
+<a
+  href={href}
+  class:list={[
+    "hover:underline decoration-2 underline-offset-2",
+    { "font-semibold": isActive },
+  ]}><slot /></a
+>

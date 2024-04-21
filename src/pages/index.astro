@@ -1,50 +1,151 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.astro";
+import IconLink from "../components/IconLink.astro";
+
+import Footer from "../components/Footer.astro";
+
+import { Icon } from "astro-icon/components";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { fade } from "astro:transitions";
+
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+const allShows = (await getCollection("shows")).sort(
+  (a, b) => b.data.showDate.valueOf() - a.data.showDate.valueOf()
+);
+
+const posts = allPosts.slice(0, 5);
+const shows = allShows.slice(0, 5);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead
+      title="Marcus Leonas Harvey"
+      description="Marcus Leonas Harvey is a Novice Lighting Design/Programmer and Web Developer"
+    />
+  </head>
+  <body
+    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
+  >
+    <Navbar />
+    <main class="w-full">
+      <article>
+        <div class="flex flex-col md:flex-row gap-4">
+          <div>
+            <img
+              src="https://github.com/flvffywvffy.png"
+              alt="Profile Picture"
+              class="w-32 rounded-md"
+            />
+          </div>
+          <div>
+            <h1 class="text-2xl">Hi, I'm Marcus.</h1>
+            <p>
+              A Novice Lighting Design/Programmer & a Frontend Web Developer
+            </p>
+            <div class="md:flex md:flex-row grid grid-cols-2 mt-2 -ml-2">
+              <IconLink href="https://github.com/flvffywvffy"
+                ><Icon name="mdi:github" />Github</IconLink
+              >
+              <IconLink href="https://twitter.com/flvffywvffy"
+                ><Icon name="mdi:twitter" />Twitter</IconLink
+              >
+              <IconLink href="mailto:marcus@marcusleonasharvey.com"
+                ><Icon name="mdi:email" />Email</IconLink
+              >
+              <IconLink href="/pgp.txt"
+                ><Icon name="mdi:lock" />PGP Key</IconLink
+              >
+            </div>
+          </div>
+        </div>
+        <div class="mt-2">
+          <h2 class="text-xl font-semibold">Latest Blog Posts</h2>
+          <ul class="flex flex-col gap-2 mt-2">
+            {
+              posts.map((post) => (
+                <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer">
+                  <a href={`/blog/${post.slug}/`} class="group">
+                    <div class="flex flex-row gap-2">
+                      <h3 class="font-semibold text-lg">{post.data.title}</h3>
+                      <svg
+                        class="text-transparent group-hover:translate-x-2 group-hover:text-inherit duration-100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-move-right"
+                      >
+                        <>
+                          <path d="M18 8L22 12L18 16" />
+                          <path d="M2 12H22" />
+                        </>
+                      </svg>
+                    </div>
+                    <p class="truncate">{post.data.description}</p>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="mt-2">
+          <h2
+            class="text-xl font-semibold hover:underline group duration-75 flex flex-row items-center gap-1"
+          >
+            <a href="/shows">Latest Portfolio Entries</a>
+            <Icon
+              name="mdi:open-in-new"
+              class={"text-transparent group-hover:text-inherit duration-75"}
+            />
+          </h2>
+          <ul class="flex flex-col gap-2 mt-2">
+            {
+              shows.map((post) => (
+                <li class="py-2 px-2 hover:bg-stone-300 dark:hover:bg-stone-800 p-1 rounded-md cursor-pointer">
+                  <a href={`/shows/${post.slug}/`} class="group">
+                    <div class="flex flex-row gap-2">
+                      <h3 class="font-semibold text-lg">{post.data.title}</h3>
+                      <svg
+                        class="text-transparent group-hover:translate-x-2 group-hover:text-inherit duration-100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-move-right"
+                      >
+                        <>
+                          <path d="M18 8L22 12L18 16" />
+                          <path d="M2 12H22" />
+                        </>
+                      </svg>
+                    </div>
+                    <p class="truncate">Director: {post.data.director}</p>
+                    <p class="truncate">Company: {post.data.company}</p>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

@@ -1,0 +1,62 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Navbar from "../../components/Navbar.astro";
+
+const posts = (await getCollection("shows")).sort(
+  (a, b) => b.data.showDate.valueOf() - a.data.showDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body
+    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
+  >
+    <Navbar />
+    <main>
+      <section>
+        <h1 class="text-2xl font-semibold pb-2">All Shows</h1>
+        <ul class="flex flex-col">
+          {
+            posts.map((post) => (
+              <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer">
+                <a href={`/shows/${post.slug}/`} class="group">
+                  <div class="flex flex-row gap-2">
+                    <h4 class="text-xl">{post.data.title}</h4>
+                    <svg
+                      class="text-transparent group-hover:translate-x-2 group-hover:text-inherit duration-100"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-move-right"
+                    >
+                      <>
+                        <path d="M18 8L22 12L18 16" />
+                        <path d="M2 12H22" />
+                      </>
+                    </svg>
+                  </div>
+                  <p class="text-sm">
+                    Last Updated: <FormattedDate date={post.data.showDate} />
+                  </p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

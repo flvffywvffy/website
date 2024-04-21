@@ -1,0 +1,75 @@
+---
+import {
+  Astronav,
+  MenuItems,
+  MenuIcon,
+  Dropdown,
+  DropdownItems,
+  DropdownSubmenu,
+} from "astro-navbar";
+import NavLink from "./NavLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="flex flex-col py-2 border-b border-neutral-400 mb-2">
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-row justify-between w-full">
+      <h1 class="text-xl"><a href="/">Marcus Leonas Harvey</a></h1>
+      <div class="flex flex-row gap-2">
+        <ThemeToggle />
+        <button id="toggle" class="open">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              id="line"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+              id="cross"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav class="hidden">
+    <ul class="flex flex-col gap-[2px]">
+      <NavLink href="/">Home</NavLink>
+      <NavLink href="/about">About</NavLink>
+      <NavLink href="/shows">Portfolio</NavLink>
+      <NavLink href="/blog">Blog</NavLink>
+      <NavLink href="/contact">Contact</NavLink>
+    </ul>
+  </nav>
+</header>
+
+<script is:inline>
+  document.querySelector("#toggle").addEventListener("click", () => {
+    document.querySelector("nav").classList.toggle("hidden");
+    document.querySelector("#toggle").classList.toggle("open");
+  });
+</script>
+
+<style>
+  #line {
+    display: none;
+  }
+  #cross {
+    display: block;
+  }
+  .open #line {
+    display: block;
+  }
+  .open #cross {
+    display: none;
+  }
+</style>

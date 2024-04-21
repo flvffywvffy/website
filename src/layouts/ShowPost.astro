@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import Navbar from "../components/Navbar.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+
+type Props = CollectionEntry<"shows">["data"];
+
+const { title, description, showDate } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body
+    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
+  >
+    <Navbar />
+    <main>
+      <article>
+        <div class="">
+          <div class="">
+            <h1 class="text-4xl font-semibold">{title}</h1>
+            <div class="text-sm mb-2">
+              Show Date: <FormattedDate date={showDate} />
+            </div>
+          </div>
+          <div class="prose prose-stone dark:prose-invert">
+            <slot />
+          </div>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
