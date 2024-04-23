@@ -1,0 +1,40 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.astro";
+
+import { Icon } from "astro-icon/components";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Contact" description="Contact me" />
+  </head>
+  <body
+    class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
+  >
+    <Navbar />
+    <main class="flex flex-col gap-2">
+      <div>
+        <h1 class="text-2xl">Contact</h1>
+        <p>I'm always happy to hear from you!</p>
+      </div>
+      <div class="flex flex-row gap-1">
+        <p>
+          <a
+            class="underline p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-800 duration-100 flex flex-row gap-1 items-center justify-center"
+            href="mailto:marcus@marcusleonasharvey.com"
+            ><Icon name="mdi:email" class={"w-4 h-4"} /> marcus@marcusleonasharvey.com
+          </a>
+        </p>
+        <p>
+          <a
+            class="underline p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-800 duration-100 flex flex-row gap-1 items-center justify-center"
+            href="/pgp.txt"
+            ><Icon name="mdi:lock" class={"w-4 h-4"} /> PGP Key
+          </a>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
