@@ -1,6 +1,6 @@
 ---
 import BaseHead from "../../components/BaseHead.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Navbar from "../../components/Navbar.astro";
@@ -13,7 +13,7 @@ const posts = (await getCollection("shows")).sort(
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title="Portfolio" description={SITE_DESCRIPTION} />
   </head>
   <body
     class="dark:bg-stone-950 dark:text-white md:max-w-screen-md md:mx-auto mx-4"
@@ -25,10 +25,10 @@ const posts = (await getCollection("shows")).sort(
         <ul class="flex flex-col">
           {
             posts.map((post) => (
-              <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer">
-                <a href={`/shows/${post.slug}/`} class="group">
+              <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer group">
+                <a href={`/shows/${post.slug}/`}>
                   <div class="flex flex-row gap-2">
-                    <h4 class="text-xl">{post.data.title}</h4>
+                    <h4 class="font-semibold text-lg">{post.data.title}</h4>
                     <svg
                       class="text-transparent group-hover:translate-x-2 group-hover:text-inherit duration-100"
                       xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +48,15 @@ const posts = (await getCollection("shows")).sort(
                       </>
                     </svg>
                   </div>
-                  <p class="text-sm">
-                    Last Updated: <FormattedDate date={post.data.showDate} />
-                  </p>
+                  <p class="truncate">Director: {post.data.director}</p>
+                  <p class="truncate">Company: {post.data.company}</p>
+                  <div class="flex flex-row gap-1 pt-1">
+                    {post.data.roles.map((role) => (
+                      <p class="bg-stone-200 dark:bg-stone-700 rounded-md px-1">
+                        {role}
+                      </p>
+                    ))}
+                  </div>
                 </a>
               </li>
             ))

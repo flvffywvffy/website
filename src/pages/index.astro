@@ -70,8 +70,8 @@ const shows = allShows.slice(0, 5);
           <ul class="flex flex-col gap-2 mt-2">
             {
               posts.map((post) => (
-                <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer">
-                  <a href={`/blog/${post.slug}/`} class="group">
+                <li class="py-2 hover:bg-stone-300 dark:hover:bg-stone-800 px-2 rounded-md hover:cursor-pointer group">
+                  <a href={`/blog/${post.slug}/`}>
                     <div class="flex flex-row gap-2">
                       <h3 class="font-semibold text-lg">{post.data.title}</h3>
                       <svg
@@ -138,6 +138,13 @@ const shows = allShows.slice(0, 5);
                     </div>
                     <p class="truncate">Director: {post.data.director}</p>
                     <p class="truncate">Company: {post.data.company}</p>
+                    <div class="flex flex-row gap-1 pt-1">
+                      {post.data.roles.map((role) => (
+                        <p class="bg-stone-200 dark:bg-stone-700 rounded-md px-1">
+                          {role}
+                        </p>
+                      ))}
+                    </div>
                   </a>
                 </li>
               ))
