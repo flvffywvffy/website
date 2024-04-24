@@ -3,7 +3,18 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "100ch",
+          },
+          img: {
+            width: "100%",
+          },
+        },
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
