@@ -29,7 +29,7 @@ const posts = (await getCollection("blog")).sort(
                   <img
                     width={720}
                     height={360}
-                    src={`/img/blog/${post.data.heroImage}`}
+                    src={post.data.heroImage}
                     alt=""
                     class="rounded-md mb-2"
                   />
