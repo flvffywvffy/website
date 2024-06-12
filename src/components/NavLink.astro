@@ -1,9 +1,12 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
 interface Props {
   href: string;
+  target?: astroHTML.JSX.HTMLAttributeAnchorTarget | null | undefined;
 }
 
-const { href } = Astro.props;
+const { href, target } = Astro.props;
 
 const { pathname } = Astro.url;
 const subpath = pathname.match(/[^\/]+/g);
@@ -12,6 +15,7 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
 
 <a
   href={href}
+  target={target ?? "_self"}
   class:list={[
     "hover:underline decoration-2 underline-offset-2",
     { "font-semibold": isActive },

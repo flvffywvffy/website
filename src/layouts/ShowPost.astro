@@ -7,7 +7,7 @@ import Footer from "../components/Footer.astro";
 
 type Props = CollectionEntry<"shows">["data"];
 
-const { title, description, showDate } = Astro.props;
+const { title, description, showDate, roles } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,13 +22,24 @@ const { title, description, showDate } = Astro.props;
     <main>
       <article>
         <div class="">
-          <div class="">
+          <div class="pb-4">
             <h1 class="text-4xl font-semibold">{title}</h1>
             <div class="text-sm mb-2">
               Show Date: <FormattedDate date={showDate} />
             </div>
+            <div class="flex flex-row gap-1">
+              {
+                roles.map((role) => (
+                  <p class="bg-stone-200 dark:bg-stone-700 rounded-md px-1">
+                    {role}
+                  </p>
+                ))
+              }
+            </div>
           </div>
-          <div class="prose prose-stone dark:prose-invert">
+          <div
+            class="prose prose-stone dark:prose-invert prose-img:w-full prose-img:pb-4 prose-img:pt-2 prose-img:m-0"
+          >
             <slot />
           </div>
         </div>

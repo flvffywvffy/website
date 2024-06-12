@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import IconLink from "../components/IconLink.astro";
 import Navbar from "../components/Navbar.astro";
 
 import { Icon } from "astro-icon/components";
@@ -19,27 +20,25 @@ import { Icon } from "astro-icon/components";
         <h1 class="text-2xl">Contact</h1>
         <p>I'm always happy to hear from you!</p>
       </div>
-      <div class="flex flex-row gap-1">
-        <p>
-          <a
-            class="underline p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-800 duration-100 flex flex-row gap-1 items-center justify-center"
-            href="mailto:marcus@marcusleonasharvey.com"
-            ><Icon name="mdi:email" class={"w-4 h-4"} /> marcus@marcusleonasharvey.com
-          </a>
-        </p>
-        <p>
-          <a
-            class="underline p-1 rounded-md hover:bg-stone-300 dark:hover:bg-stone-800 duration-100 flex flex-row gap-1 items-center justify-center"
-            href="/pgp.txt"
-            ><Icon name="mdi:lock" class={"w-4 h-4"} /> PGP Key
-          </a>
-        </p>
-      </div>
-      <div class="bg-white rounded-md shadow">
-        <iframe
-          src="https://tally.so/embed/n9d5ME?alignLeft=1&hideTitle=1&transparentBackground=1"
-          width="100%"
-          height="330"></iframe>
+      <div class="md:flex md:flex-row grid grid-cols-2 mt-2 -ml-2">
+        <IconLink href="https://stageready.co.uk"
+          ><Icon name="mdi:web" />Stage Ready</IconLink
+        >
+        <IconLink href="https://flvffy.xyz"
+          ><Icon name="mdi:web" />Developer Website</IconLink
+        >
+        <IconLink href="mailto:marcus@marcusleonasharvey.com"
+          ><Icon name="mdi:email" />Personal Email</IconLink
+        >
+        <IconLink href="mailto:marcus@stageready.co.uk"
+          ><Icon name="mdi:email" />Work Email</IconLink
+        >
+        <IconLink href="https://twitter.com/flvffywvffy"
+          ><Icon name="mdi:twitter" />Twitter</IconLink
+        >
+        <IconLink href="https://instagram.com/marcusleonas_public"
+          ><Icon name="mdi:instagram" />Instagram</IconLink
+        >
       </div>
     </main>
   </body>
